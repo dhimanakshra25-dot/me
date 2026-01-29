@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>For Aayush 💗</title>
+
+<style>
+*{
+  box-sizing:border-box;
+  font-family:Poppins, cursive;
+}
+
+body{
+  margin:0;
+  background:linear-gradient(135deg,#ffd1dc,#ffc0cb,#ffb6c1,#ff9eb5);
+  overflow-x:hidden;
+}
+
+section{
+  width:100vw;
+  min-height:100vh;
+  display:none;
+  justify-content:center;
+  align-items:center;
+  flex-direction:column;
+  text-align:center;
+  padding:30px;
+}
+
+section.active{display:flex;}
+
+h2{color:#7a003c;}
+
+button{
+  padding:15px 30px;
+  font-size:18px;
+  border:none;
+  border-radius:30px;
+  background:#ff5c8a;
+  color:white;
+  cursor:pointer;
+  box-shadow:0 8px 20px rgba(0,0,0,.25);
+  margin:10px;
+}
+
+button:hover{transform:scale(1.05);}
+
+/* PAGE 1 */
+#page1{position:relative;}
+.floating-message{
+  position:absolute;
+  font-size:22px;
+  color:#7a1f3d;
+  animation:floatFade 1.8s ease forwards;
+  pointer-events:none;
+}
+@keyframes floatFade{
+  0%{opacity:0;transform:translateY(10px);}
+  20%{opacity:1;}
+  100%{opacity:0;transform:translateY(-40px);}
+}
+
+/* ENVELOPE */
+.envelope{
+  width:220px;
+  height:150px;
+  background:#e7c9a5;
+  border-radius:6px;
+  position:relative;
+  cursor:pointer;
+  box-shadow:0 10px 25px rgba(0,0,0,.3);
+}
+.envelope::before{
+  content:"";
+  position:absolute;
+  inset:0;
+  background:linear-gradient(45deg,#d6b27c,#f1d4a8);
+  clip-path:polygon(0 0,100% 0,50% 55%);
+}
+
+/* LETTER */
+#page3{
+  overflow-y:auto;
+  padding-bottom:90px;
+}
+.letter{
+  background:#fff0f6;
+  padding:40px;
+  border-radius:10px;
+  max-width:700px;
+  text-align:left;
+  line-height:1.7;
+  box-shadow:0 10px 30px rgba(0,0,0,.3);
+}
+
+/* CHAOS */
+.choice{
+  display:flex;
+  gap:20px;
+}
+#aayushBtn{transition:.3s;}
+#akshraBtn{background:#ff2f68;}
+
+/* FINAL */
+.final{
+  font-size:34px;
+  color:#7a003c;
+}
+</style>
+</head>
+
+<body>
+
+<!-- PAGE 1 -->
+<section id="page1" class="active">
+  <h2>Tap when you miss me 💗</h2>
+  <button id="magicBtn">Tap me</button>
+</section>
+
+<!-- PAGE 2 -->
+<section id="page2">
+  <h2>Open this 🥺</h2>
+  <div class="envelope" onclick="goTo('page3')"></div>
+</section>
+
+<!-- PAGE 3 LETTER -->
+<section id="page3">
+  <div class="letter">
+heyyyy myy cutie patootie the love off myy lifeee.  
+idk why im writing thisss, but i want you to come back and read this everytime youu wanna know howw muchh i love youu. I LOVE YOU SO SO SO SO SO MUCHH YOU HAVE NOO IDEAA.  
+
+Im so fuckin glad that we met, i wish we met sooner omg i wanna hug youu so muchhh. i have alwayssss dreamed of having a guy like youu who makes me feel lovedd,, who matches myy freakk.  
+
+and then i found youuuu, i amm sooooo in llovee with youuuu. you are literallyy perfecttt and i lovee youuu soooooooo muchhhh.  
+
+I WANNA TALK TO YOU ALL DAYY ALL NIGHTT, I WANNA SPEnD EVERY SECOND OF MY LIFE WITH YOUUUU  
+
+IM JUST SO SO SO SO SO IN LOVE WITH YOUU, YOU ARE MYY WORLDD.  
+
+OK BYE THATS ITT
+  </div>
+  <br>
+  <button onclick="goTo('page4')">Next</button>
+</section>
+
+<!-- PAGE 4 CHAOS -->
+<section id="page4">
+  <h2>Who loves more?</h2>
+  <div class="choice">
+    <button id="aayushBtn">Aayush</button>
+    <button id="akshraBtn">Akshra</button>
+  </div>
+  <br>
+  <button onclick="goTo('page5')">Next</button>
+</section>
+
+<!-- PAGE 5 FINAL -->
+<section id="page5">
+  <div class="final">I LOVE YOUU ALWAYSSS 💗</div>
+</section>
+
+<script>
+function goTo(id){
+  document.querySelectorAll("section").forEach(s=>s.classList.remove("active"));
+  document.getElementById(id).classList.add("active");
+}
+
+const msgs=[
+"i love youuuu 💗","i lovee youu soo muchh 💖","i miss you my babyy 💕",
+"stayy with mee foreverr 💘","my kuchuupuchuuuuu 💞",
+"the love off myy lifeeee 💓","i wanna bite your cheekss 💗",
+"stay with me foreverrrrrr 💖","im soo in love withh youu 💕",
+"myyy good lookingg boyyyy 💘","whats cooking good lookinggg 💞",
+"be the six to myy sevennn 💓","im gonna kiss youuuuu 💗",
+"i lovee youuuu myy babyyyy 💖","COMEE TO MEE 💕",
+"JALDI AJAA OMGGG 💘","TAP IT AGAINNN 💞",
+"ONE MORE TIME 💓","2 MORE TIMEESSS 💗",
+"THERE YOUU GOOO. 💖"
+];
+
+let i=0;
+magicBtn.onclick=()=>{
+  if(i<msgs.length){
+    const d=document.createElement("div");
+    d.className="floating-message";
+    d.innerText=msgs[i++];
+    d.style.left=Math.random()*70+10+"%";
+    d.style.top=Math.random()*60+20+"%";
+    page1.appendChild(d);
+    setTimeout(()=>d.remove(),1800);
+  } else goTo("page2");
+};
+
+let scale=1;
+aayushBtn.onclick=()=>{
+  scale+=0.15;
+  akshraBtn.style.transform=`scale(${scale})`;
+  if(scale>2.5) aayushBtn.style.display="none";
+};
+akshraBtn.onclick=()=>alert("good boy 💗");
+</script>
+
+</body>
+</html>
